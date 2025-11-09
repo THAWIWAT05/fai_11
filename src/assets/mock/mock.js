@@ -6,7 +6,7 @@ import image3 from "../images/3.png";
 import image4 from "../images/4.png";
 import image5 from "../images/5.png";
 import gift1 from "../images/gifts/1.png";
-import gift2 from "../images/gifts/2png";
+import gift2 from "../images/gifts/2.png";
 import star from "../star.svg";
 
 export const _floatingImageFirst = floating1;
