@@ -4,8 +4,8 @@
 
 เว็บลง เลือกอันแรกแล้วกด สร้างได้เลย:https://render.com/
 
-เว็บsara:
-https://sara-xqlf.onrender.com/
+เว็บfai:
+[https://sara-xqlf.onrender.com/](https://fai-11.onrender.com)
 
 วิธีแก้ช่องใส่รหัส (บรรทัดที่ 33)
 src/components/ui/OtpInput.jsx
