@@ -28,7 +28,7 @@ const MemoryZone = forwardRef(
             className="flex flex-col gap-6"
         >
             <div className="text-6xl font-extrabold text-[#f78da4]">
-                SARA 📸
+                FAI 📸
             </div>
             <div className="text-sm font-extrabold text-[#f78da4]">
                 ใส่ชื่อผู้รับของขวัญ รหัส {_otp}
