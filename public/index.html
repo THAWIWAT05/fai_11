@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Happy birthday" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        />
+
+        <title>Love Home</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: "Kanit", sans-serif;
+                background: pink;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .heart {
+                position: fixed;
+                bottom: -20px;
+                font-size: 24px;
+                animation: floatUp linear;
+            }
+
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh);
+                    opacity: 0;
+                }
+            }
+
+            /* Overlay intro */
+            #overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 100;
+                transition: opacity 1.5s ease-in-out;
+            }
+
+            #intro {
+                font-size: 28px;
+                color: #ff4d94;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+                max-width: 80%;
+            }
+
+            /* ปุ่มเล่นเพลง */
+            #music-btn {
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #ff4d94;
+                color: white;
+                font-size: 20px;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 1s ease-in-out, transform 0.3s;
+                z-index: 50;
+            }
+
+            #music-btn:hover {
+                transform: translateX(-50%) scale(1.1);
+                background: #ff66aa;
+            }
+        </style>
+
+        <script>
+            // 🔒 ป้องกันเปิด DevTools (นอกจาก localhost)
+            if (window.location.hostname !== "localhost") {
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "F12") e.preventDefault();
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && ["I", "J"].includes(e.key))
+                        e.preventDefault();
+                    if ((e.ctrlKey || e.metaKey) && e.key === "U") e.preventDefault();
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "C")
+                        e.preventDefault();
+                });
+                document.addEventListener("contextmenu", (e) => e.preventDefault());
+            }
+        </script>
+    </head>
+
+    <body>
+        <noscript>คุณต้องเปิดการใช้งาน JavaScript เพื่อดูหน้านี้นะครับ</noscript>
+        <div id="root"></div>
+
+        <!-- 💖 ส่วนข้อความอวยพร + หัวใจ + ปุ่มเพลง -->
+        <div id="overlay">
+            <div id="intro"></div>
+        </div>
+
+        <button id="music-btn">🎵 กดเปิดเพลงด้วยน้าา</button>
+        <audio id="bg-music" src="%PUBLIC_URL%/music.mp3"></audio>
+
+        <script>
+            const messages = [
+                "หวัดดีคับพี่ฝ้าย 💖",
+                "Happy Birthday naaaaakubb",
+                "มีความสุขเยอะๆนะคับ 🌸",
+                "และก็ยิ้มเยอะๆๆนะคับ 😊 🌸"
+            ];
+
+            const overlay = document.getElementById("overlay");
+            const intro = document.getElementById("intro");
+            const musicBtn = document.getElementById("music-btn");
+            const bgMusic = document.getElementById("bg-music");
+            let index = 0;
+
+            function showMessage() {
+                if (index < messages.length) {
+                    intro.textContent = messages[index];
+                    intro.style.opacity = 1;
+
+                    setTimeout(() => {
+                        intro.style.opacity = 0;
+                        index++;
+                        setTimeout(showMessage, 1500);
+                    }, 3000);
+                } else {
+                    overlay.style.opacity = 0;
+                    setTimeout(() => {
+                        overlay.style.display = "none";
+                        startHearts();
+                        showMusicButton();
+                    }, 1500);
+                }
+            }
+
+            // หัวใจลอย
+            function showHearts() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerText = "💓";
+                document.body.appendChild(heart);
+
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+                setTimeout(() => heart.remove(), 5000);
+            }
+
+            function startHearts() {
+                setInterval(showHearts, 800);
+            }
+
+            // ปุ่มเพลง
+            function showMusicButton() {
+                musicBtn.style.opacity = 1;
+            }
+
+            musicBtn.addEventListener("click", () => {
+                bgMusic.play();
+                musicBtn.textContent = "🎵 กดเปิดเพลงด้วยน้าา";
+                musicBtn.style.background = "#ff80c0";
+            });
+
+            window.onload = function () {
+                showMessage();
+            };
+        </script>
+    </body>
+</html>
