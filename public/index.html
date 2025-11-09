@@ -30,11 +30,42 @@
                 overflow: hidden;
             }
 
+            /* 💓 หัวใจ */
             .heart {
                 position: fixed;
                 bottom: -20px;
                 font-size: 24px;
                 animation: floatUp linear;
+            }
+
+            /* 🎈 ลูกโป่ง */
+            .balloon {
+                position: fixed;
+                bottom: -100px;
+                width: 100px;
+                height: 130px;
+                background: radial-gradient(circle at 70% 30%, #ff7fbf, #ff4d94);
+                border-radius: 50% 50% 45% 45%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: 600;
+                font-size: 14px;
+                text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+                animation: floatUp linear;
+                box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .balloon::after {
+                content: "";
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 30px;
+                background: white;
             }
 
             @keyframes floatUp {
@@ -153,12 +184,13 @@
                     setTimeout(() => {
                         overlay.style.display = "none";
                         startHearts();
+                        startBalloons();
                         showMusicButton();
                     }, 1500);
                 }
             }
 
-            // หัวใจลอย
+            // 💓 หัวใจลอย
             function showHearts() {
                 const heart = document.createElement("div");
                 heart.className = "heart";
@@ -174,6 +206,22 @@
                 setInterval(showHearts, 800);
             }
 
+            // 🎈 ลูกโป่งลอยขึ้น
+            function showBalloon() {
+                const balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.textContent = "Happy Birthday🎂";
+                document.body.appendChild(balloon);
+
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.animationDuration = 5 + Math.random() * 3 + "s";
+                setTimeout(() => balloon.remove(), 7000);
+            }
+
+            function startBalloons() {
+                setInterval(showBalloon, 2000);
+            }
+
             // ปุ่มเพลง
             function showMusicButton() {
                 musicBtn.style.opacity = 1;
@@ -181,7 +229,7 @@
 
             musicBtn.addEventListener("click", () => {
                 bgMusic.play();
-                musicBtn.textContent = "🎵 กดเปิดเพลงด้วยน้าา";
+                musicBtn.textContent = "🎵 เพลงกำลังเล่นอยู่ 💕";
                 musicBtn.style.background = "#ff80c0";
             });
 
