@@ -24,11 +24,9 @@ code {
     height: 100%;
     background: linear-gradient(
         115deg,
-        rgba(248, 229, 206, 0.893),
-        rgba(167, 230, 247, 0.5),
-        rgba(251, 216, 233, 0.507),
-        rgba(198, 247, 218, 0.756),
-        rgba(250, 236, 197, 0.6)
+        rgba(180, 220, 255, 0.9),   /* ฟ้าอ่อน */
+        rgba(210, 190, 255, 0.9),   /* ม่วงลาเวนเดอร์ */
+        rgba(230, 220, 255, 0.9)    /* ม่วงขาวพาสเทล */
     );
     background-size: 300% 300%;
     animation: aurora-gradient 20s ease infinite;
