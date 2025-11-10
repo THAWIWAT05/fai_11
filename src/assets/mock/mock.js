@@ -7,6 +7,8 @@ import image4 from "../images/4.png";
 import image5 from "../images/5.png";
 import gift1 from "../images/gifts/1.png";
 import gift2 from "../images/gifts/2.png";
+import gift3 from "../images/gifts/3.png";
+import gift4 from "../images/gifts/4.png";
 import star from "../star.svg";
 
 export const _floatingImageFirst = floating1;
@@ -14,7 +16,7 @@ export const _floatingImageSecond = floating2;
 
 export const _albums = [image1, image2, image3, image4, image5];
 
-export const giftAlbums = [gift1, gift2];
+export const giftAlbums = [gift1, gift2, gift3, gift4];
 
 export const _stars = [
     {
