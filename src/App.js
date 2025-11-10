@@ -77,7 +77,7 @@ function App() {
                     <Header
                         content={{
                             title: "สุขสันต์วันเกิด",
-                            subtitle: "พี่FAI🎉",
+                            subtitle: "FAI🎉",
                         }}
                     />
                     <FloatingHeader
